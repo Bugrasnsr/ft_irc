@@ -3,6 +3,7 @@
 #include "../include/Channel.hpp"
 #include "../include/Command.hpp"
 #include "../include/Utils.hpp"
+#include "../include/Server.hpp"
 #include <iostream>
 #include <sstream>
 #include <cstring>
@@ -11,6 +12,9 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <errno.h>
+#include <poll.h>
+
 
 Server::Server(int port, const std::string& password) : _password(password), _running(false) {
     setupServer(port);
@@ -235,7 +239,3 @@ void Server::broadcastToAll(const std::string& message, Client* sender) {
         }
     }
 }
-
-const std::string& Server::getPassword() const {
-    return _password;
-} 
