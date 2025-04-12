@@ -8,6 +8,7 @@
 class Client;
 class Server;
 
+
 class Command {
 private:
     std::string _name;
